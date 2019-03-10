@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Zander Noriega - Perpetual Tension.wav-8eaf0032f3fae6313ebdd47544d96778.sample"
+
+[deps]
+
+source_file="res://Assets/Zander Noriega - Perpetual Tension.wav"
+source_md5="16931e7be14c2d8bcb7f0eb7b15bbafe"
+
+dest_files=[ "res://.import/Zander Noriega - Perpetual Tension.wav-8eaf0032f3fae6313ebdd47544d96778.sample" ]
+dest_md5="efa3557b21aabebaa0254b44ada7e76e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
