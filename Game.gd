@@ -4,6 +4,8 @@ onready var shield1 = get_node("CanvasLayer/UI/Shield1/ProgressBar")
 onready var shield2 = get_node("CanvasLayer/UI/Shield2/ProgressBar")
 
 func _ready():
+	$Player2.controlled = Stats.player2
+	print("PLAYER 2: " + str(Stats.player2))
 	actualize_score()
 	$CanvasLayer/UI/Round.text = "ROUND  " + str(Stats.round_no)
 
@@ -19,7 +21,11 @@ func next_round():
 	get_tree().change_scene("res://Game.tscn")
 
 func actualize_score():
-	$CanvasLayer/UI/Score.text = "Player 1    " + str(Stats.score[0]) + " : " + str(Stats.score[1]) + "    Player 2"
+	var p2_label = "Player 2"
+	if Stats.player2 == 0:
+		p2_label = "A.I."
+		
+	$CanvasLayer/UI/Score.text = "Player 1    " + str(Stats.score[0]) + " : " + str(Stats.score[1]) + "    " + p2_label
 
 func _on_Timer_timeout():
 	next_round()
