@@ -2,8 +2,14 @@ extends KinematicBody2D
 
 # Credits
 # - music: Zefz on opengameart.org
+# - music: Zander Noriega on opengameart.org (perpetial tension) https://twitter.com/codingobviously
 # - sound effects: Unnamed (Viktor.Hahn@web.de), is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. 
+# - sfx: shield hit https://freesound.org/people/StormwaveAudio/
+# - sfx: fire: Michel Baradari on openGameArt
+# - sfx: https://freesound.org/people/MortisBlack/ shield depleted
+# - sfx: shield raised: https://freesound.org/people/Misty_Audio/
 
+ 
 var BLACKHOLE_MASS = 30000
 var speed          = 10
 var applies_gravity = false
@@ -55,6 +61,7 @@ func _physics_process(delta):
 				
 			game.update_shield_indicator(ind_number, shield_power / 5.0 * 100)
 			if shield_power <= 0:
+				$ShieldDepletedSfx.play()
 				lower_shield()
 		
 		if controlled == 0:
@@ -95,13 +102,15 @@ func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
 	
 func raise_shield():
-	if !dead and shield_power > 0:
+	if !dead and shield_power > 0:	
+		$ShieldRaisedSfx.play()
 		shield_raised = true
 		$Shield.show()
 		$Shield.monitoring = true
 		$Shield.monitorable = true
 	
 func lower_shield():
+	$ShieldRaisedSfx.stop()
 	shield_raised = false
 	$Shield.hide()
 	$Shield.monitoring = false

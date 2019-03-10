@@ -35,4 +35,6 @@ func _on_Bullet_body_entered(body):
 	queue_free()
 	
 func _on_Bullet_area_entered(area):
-	  queue_free()
+	queue_free()
+	if area.is_in_group("Shield"):
+		area.get_parent().get_node("ShieldHitSfx").play()

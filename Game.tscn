@@ -468,6 +468,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "ROUND 1"
 percent_visible = 1.0
 lines_skipped = 0

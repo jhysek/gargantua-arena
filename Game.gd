@@ -25,7 +25,7 @@ func actualize_score():
 	if Stats.player2 == 0:
 		p2_label = "A.I."
 		
-	$CanvasLayer/UI/Score.text = "Player 1    " + str(Stats.score[0]) + " : " + str(Stats.score[1]) + "    " + p2_label
+	$CanvasLayer/UI/Score.text = "PLAYER 1    " + str(Stats.score[0]) + " : " + str(Stats.score[1]) + "    " + p2_label
 
 func _on_Timer_timeout():
 	next_round()

@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Components/Ship/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Components/Ship/sprite.png" type="Texture" id=2]
 [ext_resource path="res://Assets/flaunch.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/explosion01.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/light.png" type="Texture" id=5]
-[ext_resource path="res://Assets/circle.png" type="Texture" id=6]
+[ext_resource path="res://Assets/shield_hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/light.png" type="Texture" id=6]
+[ext_resource path="res://Assets/circle.png" type="Texture" id=7]
+[ext_resource path="res://Assets/shield_depleted.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/shield_raised.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -91,7 +94,7 @@ tracks/5/keys = {
 custom_solver_bias = 0.0
 radius = 20.4819
 
-[node name="Ship" type="KinematicBody2D"]
+[node name="Ship" type="KinematicBody2D" index="0"]
 
 position = Vector2( 1000, 130 )
 input_pickable = false
@@ -134,7 +137,15 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="ShieldHitSfx" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -144,11 +155,11 @@ playback_speed = 1.0
 anims/Explode = SubResource( 1 )
 blend_times = [  ]
 
-[node name="Light2D" type="Light2D" parent="." index="5"]
+[node name="Light2D" type="Light2D" parent="." index="6"]
 
 enabled = true
 editor_only = false
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
 color = Color( 1, 1, 1, 1 )
@@ -169,15 +180,15 @@ shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Range" ]
 
-[node name="Explosion" type="Sprite" parent="." index="6"]
+[node name="Explosion" type="Sprite" parent="." index="7"]
 
 visible = false
 position = Vector2( 4.37982, 0.875961 )
 scale = Vector2( 0.01, 0.01 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="Shield" type="Area2D" parent="." index="7" groups=[
+[node name="Shield" type="Area2D" parent="." index="8" groups=[
 "Shield",
 ]]
 
@@ -197,13 +208,29 @@ audio_bus_name = "Master"
 modulate = Color( 1, 1, 1, 0.442 )
 position = Vector2( 3.57489, 0 )
 scale = Vector2( 0.04, 0.04 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" index="1"]
 
 position = Vector2( 3.17767, 0 )
 shape = SubResource( 2 )
+
+[node name="ShieldDepletedSfx" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="ShieldRaisedSfx" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="finished" from="ExplosionSfx" to="." method="_on_ExplosionSfx_finished"]
 

@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/shield_depleted.ogg-05d3541a287ba4502fede5529ab69c77.oggstr"
+
+[deps]
+
+source_file="res://Assets/shield_depleted.ogg"
+source_md5="44d706bbdcd2fc15c60684afeaf1aa20"
+
+dest_files=[ "res://.import/shield_depleted.ogg-05d3541a287ba4502fede5529ab69c77.oggstr" ]
+dest_md5="14f45cff399f83efe6db3ad97de1d8a6"
+
+[params]
+
+loop=false
+loop_offset=0

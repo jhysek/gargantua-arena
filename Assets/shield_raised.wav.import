@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shield_raised.wav-6897870edda7e8ffdd6de9f566efd85f.sample"
+
+[deps]
+
+source_file="res://Assets/shield_raised.wav"
+source_md5="c9750aa5a75dad16c8570e6eb4fdda2b"
+
+dest_files=[ "res://.import/shield_raised.wav-6897870edda7e8ffdd6de9f566efd85f.sample" ]
+dest_md5="15a7e6b787d178eb3531ebd7336d9f15"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

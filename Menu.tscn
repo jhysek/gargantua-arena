@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://Components/Blackhole/Blackhole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/abel-regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Zander Noriega - Perpetual Tension.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -184,6 +185,14 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
+[sub_resource type="DynamicFont" id=12]
+
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
 [sub_resource type="Environment" id=11]
 
 background_mode = 0
@@ -263,7 +272,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Glow" ]
 
-[node name="Menu" type="Node2D" index="0"]
+[node name="Menu" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -509,6 +518,32 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_colors", "custom_fonts", "custom_styles" ]
 
+[node name="INFO" type="Label" parent="CanvasLayer/UI" index="4"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -367.0
+margin_top = -86.0
+margin_right = -31.0
+margin_bottom = -31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.414063, 0.414063, 0.414063, 1 )
+text = "Made in 48 hours for the Timdred game jam by JIRI HYSEK"
+align = 2
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
 position = Vector2( 510.586, 293.228 )
@@ -538,6 +573,14 @@ editor_draw_drag_margin = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
 environment = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 4 )
+volume_db = 5.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="pressed" from="CanvasLayer/UI/Player2/AI" to="." method="_on_AI_pressed"]
 
