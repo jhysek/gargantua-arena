@@ -94,7 +94,7 @@ tracks/5/keys = {
 custom_solver_bias = 0.0
 radius = 20.4819
 
-[node name="Ship" type="KinematicBody2D" index="0"]
+[node name="Ship" type="KinematicBody2D"]
 
 position = Vector2( 1000, 130 )
 input_pickable = false

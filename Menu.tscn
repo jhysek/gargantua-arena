@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://Components/Blackhole/Blackhole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/abel-regular.otf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/Zander Noriega - Perpetual Tension.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/controlarrows.png" type="Texture" id=4]
+[ext_resource path="res://Assets/controlwasd.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Zander Noriega - Perpetual Tension.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -116,6 +118,14 @@ anti_aliasing_size = 1
 [sub_resource type="DynamicFont" id=9]
 
 size = 22
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=13]
+
+size = 15
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
@@ -272,11 +282,11 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Glow" ]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_vertical_guides_": [ 173.242, 336.152 ]
+"_edit_vertical_guides_": [ 173.242, 336.152, 504.442 ]
 }
 
 [node name="Blackhole" parent="." index="0" instance=ExtResource( 2 )]
@@ -311,10 +321,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 172.0
-margin_top = 113.0
-margin_right = 546.0
-margin_bottom = 177.0
+margin_left = 173.0
+margin_top = 69.0
+margin_right = 547.0
+margin_bottom = 133.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -358,10 +368,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 172.0
-margin_top = 286.0
-margin_right = 546.0
-margin_bottom = 350.0
+margin_left = 174.0
+margin_top = 306.0
+margin_right = 548.0
+margin_bottom = 370.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -381,10 +391,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 166.0
-margin_top = 1.0
-margin_right = 271.0
-margin_bottom = 37.0
+margin_left = 125.0
+margin_top = 2.0
+margin_right = 230.0
+margin_bottom = 38.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -408,6 +418,58 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin", "Theme", "custom_colors", "custom_fonts", "custom_styles" ]
 
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Player1" index="1"]
+
+position = Vector2( 363.36, 19.7895 )
+scale = Vector2( 0.650921, 0.659768 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Player1" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 387.0
+margin_top = -29.0
+margin_right = 428.0
+margin_bottom = -9.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 13 )
+text = "SHIELD"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label2" type="Label" parent="CanvasLayer/UI/Player1" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 403.0
+margin_top = 31.0
+margin_right = 444.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 13 )
+text = "FIRE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
 [node name="Player2" type="Label" parent="CanvasLayer/UI" index="2"]
 
 anchor_left = 0.0
@@ -415,9 +477,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 172.0
-margin_top = 401.0
+margin_top = 442.0
 margin_right = 546.0
-margin_bottom = 465.0
+margin_bottom = 506.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -437,10 +499,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 275.0
-margin_top = -1.0
-margin_right = 315.0
-margin_bottom = 35.0
+margin_left = 233.0
+margin_right = 273.0
+margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -466,10 +527,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 166.0
-margin_top = -1.0
-margin_right = 271.0
-margin_bottom = 35.0
+margin_left = 125.0
+margin_right = 230.0
+margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -488,6 +548,63 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin", "Theme", "custom_fonts", "custom_styles" ]
 
+[node name="Controls" type="Node2D" parent="CanvasLayer/UI/Player2" index="2"]
+
+visible = false
+
+[node name="Sprite2" type="Sprite" parent="CanvasLayer/UI/Player2/Controls" index="0"]
+
+position = Vector2( 365.36, 16.2948 )
+scale = Vector2( 0.650921, 0.659768 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label3" type="Label" parent="CanvasLayer/UI/Player2/Controls" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 389.0
+margin_top = -32.0
+margin_right = 430.0
+margin_bottom = -12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 13 )
+text = "SHIELD"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Label4" type="Label" parent="CanvasLayer/UI/Player2/Controls" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 405.0
+margin_top = 29.0
+margin_right = 446.0
+margin_bottom = 49.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 13 )
+text = "FIRE"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
 [node name="Button" type="Button" parent="CanvasLayer/UI" index="3"]
 
 anchor_left = 0.0
@@ -495,9 +612,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 176.0
-margin_top = 519.0
+margin_top = 546.0
 margin_right = 353.0
-margin_bottom = 565.0
+margin_bottom = 592.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -576,7 +693,7 @@ environment = SubResource( 11 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 6 )
 volume_db = 5.0
 autoplay = true
 mix_target = 0

@@ -12,7 +12,9 @@ func _on_Button_pressed():
 func _on_AI_pressed():
 	player2 = 0
 	$CanvasLayer/UI/Player2/HUMAN.pressed = false
-
+	$CanvasLayer/UI/Player2/Controls.hide()
+	
 func _on_HUMAN_pressed():
 	player2 = 2
 	$CanvasLayer/UI/Player2/AI.pressed = false
+	$CanvasLayer/UI/Player2/Controls.show()	

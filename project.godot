@@ -19,6 +19,11 @@ config/icon="res://icon.png"
 Stats="*res://Stats.gd"
 MusicPlayer="*res://MusicPlayer.tscn"
 
+[display]
+
+window/size/width=1280
+window/size/height=800
+
 [input]
 
 ui_left_B=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
