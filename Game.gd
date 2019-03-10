@@ -10,6 +10,8 @@ func _ready():
 func score(player_number):
 	Stats.score(player_number)
 	actualize_score()
+	$Timer.stop()
+	$Timer.wait_time = 1
 	$Timer.start()
 
 func next_round():

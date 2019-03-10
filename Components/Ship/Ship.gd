@@ -23,12 +23,17 @@ var shield_power = 5
 var dead = false 
 
 var Bullet = load("res://Components/Bullet/Bullet.tscn")
+var AI     = load("res://Components/Ship/AI.gd")
+var ai 
 
 onready var blackhole = get_node("/root/Game/Blackhole")
 onready var game      = get_node("/root/Game")
 
 
 func _ready():
+	if controlled == 0:
+		ai = AI.new(self, game)
+		
 	set_physics_process(true)
 		
 func _physics_process(delta):
@@ -38,16 +43,23 @@ func _physics_process(delta):
 			applies_gravity = true 
 	else:
 		gravity_angle = position.angle_to_point(blackhole.position)
-		gravity_force = BLACKHOLE_MASS / position.distance_squared_to(blackhole.position)	
+		gravity_force = blackhole.MASS / position.distance_squared_to(blackhole.position)	
 		gravity_vector = Vector2(cos(gravity_angle), sin(gravity_angle))
 		velocity -= gravity_vector * gravity_force
 		
 		if shield_raised and shield_power > 0:
 			shield_power -= delta
-			game.update_shield_indicator(controlled, shield_power / 5.0 * 100)
+			var ind_number = controlled
+			if ind_number == 0:
+				ind_number = 2
+				
+			game.update_shield_indicator(ind_number, shield_power / 5.0 * 100)
 			if shield_power <= 0:
 				lower_shield()
 		
+		if controlled == 0:
+			ai.process(delta)
+			
 		if controlled == 1:
 			if Input.is_action_just_pressed("ui_up") and shield_power > 0:
 			  raise_shield()
@@ -83,7 +95,7 @@ func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
 	
 func raise_shield():
-	if shield_power > 0:
+	if !dead and shield_power > 0:
 		shield_raised = true
 		$Shield.show()
 		$Shield.monitoring = true
@@ -105,18 +117,19 @@ func explode():
 		if controlled == 1:
 			if game.has_node("Player2"):
 				game.score(2)
-		if controlled == 2:
+		if controlled == 2 or controlled == 0:
 			if game.has_node("Player1"):
 				game.score(1)
 
 	
 func fire():
-	var bullet = Bullet.instance()
-	get_node("/root/Game").add_child(bullet)
-	bullet.position = position -Vector2(cos(rotation), sin(rotation)) * 20
-	bullet.fire(-Vector2(cos(rotation), sin(rotation)))
-	$FireSfx.play()
-	speed -= 0.2
+	if !dead:
+		var bullet = Bullet.instance()
+		get_node("/root/Game/Bullets").add_child(bullet)
+		bullet.position = position -Vector2(cos(rotation), sin(rotation)) * 20
+		bullet.fire(-Vector2(cos(rotation), sin(rotation)))
+		$FireSfx.play()
+		speed -= 0.2
 
 
 func _on_ExplosionSfx_finished():

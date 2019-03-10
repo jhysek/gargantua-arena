@@ -3,10 +3,10 @@
 [ext_resource path="res://Components/Bullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Components/Bullet/bullet.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3.86406, 1.03175 )
+radius = 4.03436
 
 [node name="Bullet" type="Area2D"]
 
