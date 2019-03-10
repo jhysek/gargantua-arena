@@ -3,7 +3,7 @@ extends Object
 var ship
 var game
 
-var decision_cooldown = 0.1
+var decision_cooldown = 0.2
 
 var rotation_target
 var actions = {}
@@ -11,6 +11,16 @@ var actions = {}
 var bullets
 
 func _init(controlled_ship, played_game):
+	
+	if Stats.round_no <= 3:
+		decision_cooldown = 0.3
+	if Stats.round_no >= 3 and Stats.round_no <= 10:
+		decision_cooldown = 0.2
+	if Stats.round_no > 10:
+		decision_cooldown = 0.01
+	if Stats.round_no == 1:
+		decision_cooldown = 0.4
+		
 	ship = controlled_ship
 	game = played_game
 	bullets = ship.get_node("/root/Game/Bullets")
