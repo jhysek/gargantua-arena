@@ -104,7 +104,7 @@ func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
 	
 func raise_shield():
-	if !dead and shield_power > 0:	
+	if !dead and shield_power > 0 and !shield_raised:	
 		$ShieldRaisedSfx.play()
 		shield_raised = true
 		$Shield.show()

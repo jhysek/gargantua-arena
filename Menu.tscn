@@ -284,7 +284,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Glow" ]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -696,7 +696,7 @@ environment = SubResource( 11 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
 
 stream = ExtResource( 6 )
-volume_db = 5.0
+volume_db = 0.0
 autoplay = true
 mix_target = 0
 bus = "Master"
