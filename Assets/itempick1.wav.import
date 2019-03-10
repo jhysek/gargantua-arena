@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/itempick1.wav-0f17d4a272f19182b3b98d9598c0353e.sample"
+
+[deps]
+
+source_file="res://Assets/itempick1.wav"
+source_md5="5a901ca038dd7250ce006bea8e28adea"
+
+dest_files=[ "res://.import/itempick1.wav-0f17d4a272f19182b3b98d9598c0353e.sample" ]
+dest_md5="39252aa9d0d4ac1af8921494e6f686b1"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

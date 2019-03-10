@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://Components/Blackhole/Blackhole.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/abel-regular.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/controlarrows.png" type="Texture" id=4]
 [ext_resource path="res://Assets/controlwasd.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Zander Noriega - Perpetual Tension.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Zander Noriega - Perpetual Tension.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/itemback.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/itempick1.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -699,9 +701,31 @@ autoplay = true
 mix_target = 0
 bus = "Master"
 
+[node name="Hover" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Click" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 8 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player2/AI" to="." method="_on_Button_mouse_entered"]
+
 [connection signal="pressed" from="CanvasLayer/UI/Player2/AI" to="." method="_on_AI_pressed"]
 
+[connection signal="mouse_entered" from="CanvasLayer/UI/Player2/HUMAN" to="." method="_on_Button_mouse_entered"]
+
 [connection signal="pressed" from="CanvasLayer/UI/Player2/HUMAN" to="." method="_on_HUMAN_pressed"]
+
+[connection signal="mouse_entered" from="CanvasLayer/UI/Button" to="." method="_on_Button_mouse_entered"]
 
 [connection signal="pressed" from="CanvasLayer/UI/Button" to="." method="_on_Button_pressed"]
 

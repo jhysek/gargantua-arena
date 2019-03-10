@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Components/Ship/Ship.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/AnimStartRound.tres" type="Animation" id=5]
 [ext_resource path="res://Assets/abel-regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/itemback.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/itempick1.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=2]
 
@@ -793,9 +795,33 @@ blend_times = [  ]
 
 [node name="Bullets" type="Node2D" parent="." index="9"]
 
+[node name="Hover" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 7 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Click" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 8 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="mouse_entered" from="CanvasLayer/UI/PauseMenu/Button" to="." method="_on_Button_mouse_entered"]
+
 [connection signal="pressed" from="CanvasLayer/UI/PauseMenu/Button" to="." method="_on_PauseButton_pressed"]
 
+[connection signal="mouse_entered" from="CanvasLayer/UI/PauseMenu/Button2" to="." method="_on_Button_mouse_entered"]
+
 [connection signal="pressed" from="CanvasLayer/UI/PauseMenu/Button2" to="." method="_on_Exit_pressed"]
+
+[connection signal="mouse_entered" from="CanvasLayer/UI/GameOver/Again" to="." method="_on_Button_mouse_entered"]
+
+[connection signal="mouse_entered" from="CanvasLayer/UI/GameOver/Back" to="." method="_on_Button_mouse_entered"]
 
 [connection signal="pressed" from="CanvasLayer/UI/GameOver/Back" to="." method="_on_Exit_pressed"]
 

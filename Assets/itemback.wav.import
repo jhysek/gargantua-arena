@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/itemback.wav-a927d3559052d65802fd0677254255e5.sample"
+
+[deps]
+
+source_file="res://Assets/itemback.wav"
+source_md5="9e547dd34e2e22cf876b0d71ac4adf85"
+
+dest_files=[ "res://.import/itemback.wav-a927d3559052d65802fd0677254255e5.sample" ]
+dest_md5="1eb82e74051e8f2fe56c10d0c5cd3a7a"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -13,18 +13,21 @@ func _ready():
 	set_process_input(true)
 	
 func _input(event):
-	if event is InputEventKey and event.is_action_pressed('ui_accept'):
+	if game_over and event is InputEventKey and event.is_action_pressed('ui_accept'):
 		Stats.reset_score()
 		get_tree().change_scene("res://Game.tscn")
 
 	if event is InputEventKey and event.is_action_pressed('ui_cancel'):
 		if game_over:
+			$Click.play()
 			to_menu()
 		else:
 			if paused:
+				$Click.play()
 				paused = false
 				$CanvasLayer/UI/PauseMenu.hide()
 			else:
+				$Click.play()
 				paused = true
 				$CanvasLayer/UI/PauseMenu.show()
 		
@@ -62,7 +65,7 @@ func next_round():
 	get_tree().change_scene("res://Game.tscn")
 
 func actualize_score():
-	var p2_label = "Player 2"
+	var p2_label = "PLAYER 2"
 	if Stats.player2 == 0:
 		p2_label = "A.I."
 		
@@ -86,9 +89,14 @@ func update_shield_indicator(player_number, new_value):
 			$CanvasLayer/UI/Shield2.text = "SHIELD DEPLETED"
 
 func _on_PauseButton_pressed():
+	$Click.play()
 	paused = false
 	$CanvasLayer/UI/PauseMenu.hide()
 	
 
 func _on_Exit_pressed():
+	$Click.play()
 	to_menu()
+
+func _on_Button_mouse_entered():
+	$Hover.play()
