@@ -5,6 +5,7 @@ var round_no = 1
 var player2 = 2
 
 func reset_score():
+	round_no = 1
 	score = [0, 0]
 	
 func set_player2(number):

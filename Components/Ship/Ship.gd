@@ -43,7 +43,9 @@ func _ready():
 	set_physics_process(true)
 		
 func _physics_process(delta):
-	
+	if game.paused:
+		return
+		
 	if !applies_gravity:
 		if abs(position.x - blackhole.position.x) < 10:
 			applies_gravity = true 

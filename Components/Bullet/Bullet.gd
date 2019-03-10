@@ -10,7 +10,7 @@ var speed     = 20
 var fired = false
 
 onready var blackhole = get_node("/root/Game/Blackhole")
-
+onready var game      = get_node("/root/Game")
 
 func fire(direction_vec):
 	velocity = direction_vec * speed
@@ -18,7 +18,7 @@ func fire(direction_vec):
 	set_physics_process(true)
 	
 func _physics_process(delta):
-	if fired:
+	if !game.paused and fired:
 		gravity_angle = position.angle_to_point(blackhole.position)
 		gravity_force = blackhole.MASS / global_position.distance_squared_to(blackhole.position)	
 		gravity_vector = Vector2(cos(gravity_angle), sin(gravity_angle))
